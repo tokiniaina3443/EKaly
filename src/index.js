@@ -1,13 +1,12 @@
 // modules
 const express = require("express");
-const MongoClient = require("mongodb").MongoClient;
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 
 // instance
 const app = express();
-const parkings = require("./routes/parkings");
-const student = require("./routes/student");
+const User = require("./routes/User.route");
+const Restaurant = require("./routes/restaurant.route");
 
 app.use(express.json());
 
@@ -30,8 +29,8 @@ db.once("open", function () {
   console.log("connecté à Mongoose");
 });
 
-app.use("/parkings", parkings);
-app.use("/students", student);
+app.use("/users", User);
+app.use("/restaurants", Restaurant);
 
 app.listen(3000, () => {
   console.log(process.env.TOKEN_SECRET);

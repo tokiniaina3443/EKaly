@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const req = require("express/lib/request");
 var router = express.Router();
 
-const studentRepository = require('../models/student.model');
-const Student = require("../modules/student.module");
+const studentRepository = require('../repository/student.model');
+const Student = require("../models/student.module");
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization']

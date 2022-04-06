@@ -1,4 +1,4 @@
-var Student = require("../modules/student.module.js");
+var Student = require("../models/student.module.js");
 
 // Créer un étudiant
 var createStudent = async (studentData) => {
