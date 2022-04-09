@@ -2,11 +2,13 @@ var express = require("express");
 const jwt = require("jsonwebtoken");
 const req = require("express/lib/request");
 var router = express.Router();
+const mail = require('../../confi');
 
 const User = require("../models/User.model");
 const Users = require("../repository/User.repository");
 
 router.post("/add", async (req, res) => {
+  mail.sendConfirmationEmail();
   let newUser = new User(req.body);
   await Users.CreateUser(newUser);
   res.status(200).json(newUser);
