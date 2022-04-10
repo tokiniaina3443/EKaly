@@ -37,7 +37,6 @@ router.post("/addPlat", Utils.AuthenticateToken, async (req, res) => {
 
 router.get("/listPlat", Utils.AuthenticateToken, async (req, res) => {
   let id = Utils.GetTokenId(req, res);
-  console.log(id);
   let plats = await Restaurants.ListPlat(req.query.idRestaurant, req.query.filterName);
   res.status(200).json({action: "success", payload: plats});
 });

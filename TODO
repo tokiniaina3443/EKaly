@@ -10,13 +10,13 @@
 >client
     >inscription OK
     >login OK
-    >function get id by token Ok
-    >commander plats
+    >function get id in token Ok
+    >commander plats OK
 >Ekaly
-    >liste commande
->liste livreur
-    >assigner livreur a un commande
+    >liste commande OK
 >livreur
+    >login OK
+    >liste livreur 
     >lister commande a livreur
     >livrer commande
 >restaurant
