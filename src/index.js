@@ -1,18 +1,21 @@
 // modules
 const express = require("express");
 const mongoose = require("mongoose");
+var cors = require('cors');
 const dotenv = require('dotenv');
 
 // instance
 const app = express();
+app.use(cors());
+app.use(express.json());
+
 const Restaurant = require("./routes/restaurant.route");
 const Ekaly = require("./routes/ekaly.route");
 const Client = require("./routes/client.route");
 const Livreur = require("./routes/livreur.route");
 
-app.use(express.json());
 
-// get config vars
+// get config 
 dotenv.config();
 
 
