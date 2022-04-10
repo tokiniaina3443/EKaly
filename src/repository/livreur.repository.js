@@ -26,4 +26,9 @@ var ListCommand = async() => {
     return commands;
 }
 
-module.exports = { FindLivreurByMailAndPassword, ListLivreur, ListCommand };
+var Livrer = async (idCommand) => {
+    const command = await Commands.findOneAndUpdate({_id: idCommand}, {status: "livre"});
+    return command;
+}
+
+module.exports = { FindLivreurByMailAndPassword, ListLivreur, ListCommand, Livrer};

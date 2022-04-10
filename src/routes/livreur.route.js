@@ -24,4 +24,9 @@ router.get("/listCommand", Utils.AuthenticateToken, async (req, res) => {
     res.status(200).json({action: "success", payload: command})
 });
 
+router.post("/livrer", Utils.AuthenticateToken, async (req, res) => {
+    let command = await Livreurs.Livrer(req.body.idCommand);
+    res.status(200).json({action: "success", payload: command})
+});
+
 module.exports = router;
