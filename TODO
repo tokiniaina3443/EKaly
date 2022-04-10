@@ -8,8 +8,9 @@
     >login OK
     >lister restaurant Ok
 >client
-    >inscription
-    >login
+    >inscription OK
+    >login OK
+    >function get id by token Ok
     >commander plats
 >Ekaly
     >liste commande

@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const app = express();
 const Restaurant = require("./routes/restaurant.route");
 const Ekaly = require("./routes/ekaly.route");
+const Client = require("./routes/client.route");
 
 app.use(express.json());
 
@@ -31,6 +32,7 @@ db.once("open", function () {
 
 app.use("/restaurants", Restaurant);
 app.use("/ekalys", Ekaly);
+app.use("/clients", Client);
 
 app.listen(3000, () => {
   console.log("Serveur à l'écoute");

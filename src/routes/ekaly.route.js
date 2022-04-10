@@ -10,7 +10,7 @@ const Ekalys = require("../repository/ekaly.repository");
 router.post("/login", async (req, res) => {
   let ekaly = await Ekalys.FindEkalyByMailAndPassword(req.body.mail, req.body.motDePasse);
   if(ekaly != null){
-    let token = jwt.sign(ekaly.mail, process.env.TOKEN_SECRET)
+    let token = jwt.sign({id: ekaly._id}, process.env.TOKEN_SECRET)
     res.status(200).json({ action: "success", payload: {token: token}});
   }
   else{
