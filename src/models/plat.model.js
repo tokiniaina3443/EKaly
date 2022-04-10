@@ -1,18 +1,20 @@
 const { Double } = require('mongodb');
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const PlatSchema = mongoose.Schema({
-    id: mongoose.Schema.Types.ObjectId,
-    name: {
+const platSchema = mongoose.Schema({
+    nom: {
         type: String,
         required: true
     },
-    prix: {
+    prixDeFabrication: {
         type: Number,
         required: true
-    }
+    },
+    prixDeVente: {
+        type: Number,
+        required: true
+    },
   });
 
-const Plat = mongoose.model('Plat', PlatSchema);
-module.exports = Plat;
+const plat = mongoose.model('plats', platSchema);
+module.exports = plat;

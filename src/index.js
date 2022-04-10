@@ -5,8 +5,8 @@ const dotenv = require('dotenv');
 
 // instance
 const app = express();
-const User = require("./routes/User.route");
 const Restaurant = require("./routes/restaurant.route");
+const Ekaly = require("./routes/ekaly.route");
 
 app.use(express.json());
 
@@ -29,10 +29,9 @@ db.once("open", function () {
   console.log("connecté à Mongoose");
 });
 
-app.use("/users", User);
 app.use("/restaurants", Restaurant);
+app.use("/ekalys", Ekaly);
 
 app.listen(3000, () => {
-  console.log(process.env.TOKEN_SECRET);
   console.log("Serveur à l'écoute");
 });

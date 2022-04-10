@@ -1,26 +1,51 @@
 const res = require("express/lib/response");
+
 var Restaurants = require("../models/restaurant.model");
 var Plats = require("../models/plat.model");
+const restaurant = require("../models/restaurant.model");
 
-// Create restaurant
-var CreateRestaurant = async (restaurantData) => {
-  await Restaurants.create(restaurantData, (err, res) => {
-    if (err) throw err;
-  });
-};
+var CreateRestaurant = async (RestaurantData) => {
+  let restaurant = await Restaurants.create(RestaurantData);
+  return restaurant;
+}
 
-// list all restaurant
-var ListRestaurant = async () => {
-  return await Restaurants.find().populate("plats");
-};
+var FindRestaurantByMailAndPassword = async (mail, motDePasse) => {
+  const restaurant = await Restaurants.findOne({mail: mail, motDePasse: motDePasse});
+  return restaurant;
+}
 
-var AddPlat = async ({ idRestaurant, plat }) => {
-  const newPlat = await Plats.create(plat);
-  console.log(newPlat._id);
-  await Restaurants.findOneAndUpdate(
+var AddPlat = async (idRestaurant, plat) => {
+  let newPlat = await Plats.create(plat);
+  let newRestaurant = await Restaurants.findOneAndUpdate(
     { _id: idRestaurant },
     { $push: { plats: newPlat._id } }
   );
+  return newPlat;
 };
 
-module.exports = { CreateRestaurant, ListRestaurant, AddPlat };
+var ListPlat = async (idRestaurant, filterName) => {
+  if(filterName != null){
+    let restaurants = await Restaurants.findOne({_id: idRestaurant})
+    .populate({path: 'plats',
+     match: { nom: {$regex: '.*' + filterName + '.*'}}});
+    return restaurants.plats;
+  }
+  else{
+    let restaurants = await Restaurants.findOne({_id: idRestaurant})
+    .populate('plats');
+    return restaurants.plats;
+  }
+}
+
+var ListRestaurant = async(filterName) => {
+  if(filterName != null){
+    let restaurants = await Restaurants.find({ nom: {$regex: '.*' + filterName + '.*'}});
+    return restaurants;
+  }
+  else{
+    let restaurants = await Restaurants.find({});
+    return restaurants;
+  }
+}
+
+module.exports = { FindRestaurantByMailAndPassword, CreateRestaurant, AddPlat, ListPlat, ListRestaurant };

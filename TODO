@@ -1,0 +1,24 @@
+>Plat
+    attribut (nom, prix de fabrication, prix de ventes) OK
+>restaurant
+    login OK
+    ajouter Plat OK
+    lister plats Ok
+>Ekaly
+    >login OK
+    >lister restaurant Ok
+>client
+    >inscription
+    >login
+    >commander plats
+>Ekaly
+    >liste commande
+>liste livreur
+    >assigner livreur a un commande
+>livreur
+    >lister commande a livreur
+    >livrer commande
+>restaurant
+    >voir benefice par jours
+>Ekaly
+    >voir benefice par jours
