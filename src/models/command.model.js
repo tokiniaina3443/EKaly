@@ -12,7 +12,10 @@ const commandSchema = mongoose.Schema({
         required: true
     },
     date: Date,
-    livreur: String,
+    livreur: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'livreurs'
+    },
     status: {
         type: String,
         enum: ['nonLivre', 'livre'],

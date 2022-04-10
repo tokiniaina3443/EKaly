@@ -15,4 +15,9 @@ var ListCommand = async() => {
     return commands;
 }
 
-module.exports = { FindEkalyByMailAndPassword, ListCommand };
+var AssignerLivreurACommand = async (idCommand, idLivreur) => {
+    let command = await Commands.findOneAndUpdate({_id: idCommand}, {livreur: idLivreur});
+    return command;
+}
+
+module.exports = { FindEkalyByMailAndPassword, ListCommand, AssignerLivreurACommand };
