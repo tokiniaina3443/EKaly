@@ -1,0 +1,51 @@
+>Plat
+    attribut (nom, prix de fabrication, prix de ventes) OK
+>restaurant
+    login OK
+    ajouter Plat OK
+    lister plats Ok
+>Ekaly
+    >login OK
+    >lister restaurant Ok
+>client
+    >inscription OK
+    >login OK
+    >function get id in token Ok
+    >commander plats OK
+>Ekaly
+    >liste commande OK
+>livreur
+    >login OK
+    >liste livreur OK
+>Ekaly
+    >assigner livreur a un commande Ok
+>livreur
+    >livrer commande OK
+>restaurant
+    >voir benefice par jours 
+>Ekaly
+    >voir benefice par jours
+
+-------------Front end -----------
+>Ekaly
+    >login
+    >liste commande
+    >assigner livreur a un commande
+    >benefice du jours
+>client
+    >sign in
+    >login
+    >liste restaurant
+    >liste plat d'un restaurant
+    >faire un commande
+>livreur
+    >login
+    >liste de commande assigner aux livreur
+    >livrer un commande
+>restaurant
+    >login
+    >liste commande
+    >liste plats
+    >ajout plats
+    >supprimer plats
+    >benefice par jours
