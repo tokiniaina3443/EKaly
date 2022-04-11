@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RequestService } from './request.service';
+import { EkalyService } from './ekaly.service';
 
-describe('RequestService', () => {
-  let service: RequestService;
+describe('EkalyService', () => {
+  let service: EkalyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RequestService);
+    service = TestBed.inject(EkalyService);
   });
 
   it('should be created', () => {

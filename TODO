@@ -28,24 +28,24 @@
 
 -------------Front end -----------
 >Ekaly
-    >login
-    >liste commande
-    >assigner livreur a un commande
-    >benefice du jours
+    >login OK
+    >liste commande 
+    >assigner livreur a un commande 
+    >benefice du jours 
 >client
-    >sign in
-    >login
-    >liste restaurant
-    >liste plat d'un restaurant
-    >faire un commande
+    >sign in 
+    >login 
+    >liste restaurant 
+    >liste plat d'un restaurant 
+    >faire un commande 
 >livreur
-    >login
-    >liste de commande assigner aux livreur
-    >livrer un commande
->restaurant
-    >login
-    >liste commande
-    >liste plats
-    >ajout plats
-    >supprimer plats
-    >benefice par jours
+    >login 
+    >liste de commande assigner aux livreur 
+    >livrer un commande 
+>restaurant 
+    >login 
+    >liste commande 
+    >liste plats 
+    >ajout plats 
+    >supprimer plats  
+    >benefice par jours 
