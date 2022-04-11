@@ -9,7 +9,6 @@ const path = "./static/";
 const pathapi = "/api/";
 const app = express();
 app.use(express.static(path));
-// app.use(cors());
 app.use(express.json());
 
 const Restaurant = require("./src/routes/restaurant.route");
@@ -25,16 +24,16 @@ const url = process.env.mongoProd;
 const dbName = process.env.databaseProd;
 
 //connection a mongoose
-// mongoose.connect(url, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-// db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", function () {
-//   console.log("connecté à Mongoose");
-// });
+db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  console.log("connecté à Mongoose");
+});
 
 app.get("/", function (req, res) {
   res.sendFile(path + "index.html");
