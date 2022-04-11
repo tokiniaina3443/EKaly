@@ -5,14 +5,21 @@ var cors = require('cors');
 const dotenv = require('dotenv');
 
 // instance
+const path = __dirname + '/ekalyClient/dist/ekaly-client/';
+const pathapi = '/api/';
 const app = express();
+app.use(express.static(path));
 app.use(cors());
 app.use(express.json());
 
-const Restaurant = require("./routes/restaurant.route");
-const Ekaly = require("./routes/ekaly.route");
-const Client = require("./routes/client.route");
-const Livreur = require("./routes/livreur.route");
+app.get('/', function (req,res) {
+  res.sendFile(path + "index.html");
+});
+
+const Restaurant = require("./src/routes/restaurant.route");
+const Ekaly = require("./src/routes/ekaly.route");
+const Client = require("./src/routes/client.route");
+const Livreur = require("./src/routes/livreur.route");
 
 
 // get config 
@@ -34,10 +41,10 @@ db.once("open", function () {
   console.log("connecté à Mongoose");
 });
 
-app.use("/restaurants", Restaurant);
-app.use("/ekalys", Ekaly);
-app.use("/clients", Client);
-app.use("/livreurs", Livreur);
+app.use(pathapi + "restaurants", Restaurant);
+app.use(pathapi + "ekalys", Ekaly);
+app.use(pathapi + "clients", Client);
+app.use(pathapi + "livreurs", Livreur);
 
 app.listen(3000, () => {
   console.log("Serveur à l'écoute");
