@@ -1,18 +1,18 @@
 // modules
 const express = require("express");
 const mongoose = require("mongoose");
-var cors = require('cors');
-const dotenv = require('dotenv');
+var cors = require("cors");
+const dotenv = require("dotenv");
 
 // instance
-const path = __dirname + '/ekalyClient/dist/ekaly-client/';
-const pathapi = '/api/';
+const path = __dirname + "/ekalyClient/dist/ekaly-client/";
+const pathapi = "/api/";
 const app = express();
 app.use(express.static(path));
 app.use(cors());
 app.use(express.json());
 
-app.get('/', function (req,res) {
+app.get("/", function (req, res) {
   res.sendFile(path + "index.html");
 });
 
@@ -21,16 +21,14 @@ const Ekaly = require("./src/routes/ekaly.route");
 const Client = require("./src/routes/client.route");
 const Livreur = require("./src/routes/livreur.route");
 
-
-// get config 
+// get config
 dotenv.config();
 
-
-const url = "mongodb://localhost:27017";
-const dbName = "EKaly";
+const url = process.env.mongoProd;
+const dbName = process.env.databaseProd;
 
 //connection a mongoose
-mongoose.connect("mongodb://localhost:27017/Test", {
+mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
