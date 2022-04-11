@@ -5,16 +5,12 @@ var cors = require("cors");
 const dotenv = require("dotenv");
 
 // instance
-const path = __dirname + "/ekalyClient/dist/ekaly-client/";
+const path = "./static/";
 const pathapi = "/api/";
 const app = express();
 app.use(express.static(path));
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
-
-app.get("/", function (req, res) {
-  res.sendFile(path + "index.html");
-});
 
 const Restaurant = require("./src/routes/restaurant.route");
 const Ekaly = require("./src/routes/ekaly.route");
@@ -29,22 +25,25 @@ const url = process.env.mongoProd;
 const dbName = process.env.databaseProd;
 
 //connection a mongoose
-mongoose.connect(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect(url, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("connecté à Mongoose");
-});
+// db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", function () {
+//   console.log("connecté à Mongoose");
+// });
 
+app.get("/", function (req, res) {
+  res.sendFile(path + "index.html");
+});
 app.use(pathapi + "restaurants", Restaurant);
 app.use(pathapi + "ekalys", Ekaly);
 app.use(pathapi + "clients", Client);
 app.use(pathapi + "livreurs", Livreur);
 
 app.listen(port, () => {
-  console.log("Serveur à l'écoute");
+  console.log("Serveur à l'écoute sur le port " + port);
 });
