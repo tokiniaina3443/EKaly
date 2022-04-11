@@ -24,6 +24,7 @@ const Livreur = require("./src/routes/livreur.route");
 // get config
 dotenv.config();
 
+const port = process.env.PORT || 3000;
 const url = process.env.mongoProd;
 const dbName = process.env.databaseProd;
 
@@ -44,6 +45,6 @@ app.use(pathapi + "ekalys", Ekaly);
 app.use(pathapi + "clients", Client);
 app.use(pathapi + "livreurs", Livreur);
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Serveur à l'écoute");
 });
