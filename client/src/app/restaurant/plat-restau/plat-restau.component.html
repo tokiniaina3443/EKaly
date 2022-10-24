@@ -1,0 +1,41 @@
+<div class="row" style="padding: 0% 4% 4% 4%">
+  <div class="col-md-12 row">
+    <div class="col-md-1"></div>
+    <div class="col-md-12">
+      <div style="margin-right: 20px; margin-top: 3%">
+        <h2>Liste des plats</h2>
+      </div>
+
+      <table
+        class="table table-bordered"
+        style="box-shadow: 0 4px 10px -5px #0000004d; margin: 20px"
+      >
+        <thead>
+          <tr class="table-info">
+            <th>Plat</th>
+            <th>prix de fabrication</th>
+            <th>prix de vente</th>
+            <th>visibilité</th>
+          </tr>
+        </thead>
+        <tbody style="background-color: white">
+          <tr *ngFor="let data of datas">
+            <td>{{ data.nom }}</td>
+            <td>{{ data.prix }}</td>
+            <td>{{ data.prixvente }}</td>
+            <td>{{ data.visible }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="col-md-1"></div>
+
+<!-- Success message -->
+<div class="success" *ngIf="showSuccessMessage">Saved successfully</div>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{ serverErrorMessages }}
+</div>

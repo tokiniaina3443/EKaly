@@ -1,0 +1,26 @@
+<div style="margin: 30px 60px 30px 70px;">
+  <div class="row col-md-1">
+    <button class="btn btn-info" style="box-shadow: 0 0px 2px 0px #0000004d;margin-bottom: 15px;" (click)="returnTo()">retour</button>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <table class="table table-bordered" style="box-shadow: 0 4px 10px -5px #0000004d;">
+        <thead>
+          <tr class="table-info">
+            <th scope="col">Plat</th>
+            <th scope="col">Quantite</th>
+          </tr>
+        </thead>
+        <tbody style="background-color: white;">
+          <tr *ngFor="let data of datas">
+            <td>{{ data.nomplat }}</td>
+            <td>{{ data.quantite }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+

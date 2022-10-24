@@ -1,0 +1,18 @@
+<mat-toolbar style="background-color: #0a932c; color: white">
+  <a mat-button style="color: white" routerLink="/restaurant/commande"
+    >Commande</a
+  >
+  <a mat-button style="color: white" routerLink="/restaurant/plat"
+    >liste plat</a
+  >
+  <a mat-button style="color: white" routerLink="/restaurant/add-plat"
+    >ajouter plat</a
+  >
+  <a mat-button style="color: white" routerLink="/restaurant/situation"
+    >Bénefice</a
+  >
+  <a mat-button style="color: white; margin-left: auto" (click)="onLogout()"
+    >Se deconnecter</a
+  >
+</mat-toolbar>
+<router-outlet></router-outlet>
