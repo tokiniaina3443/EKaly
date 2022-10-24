@@ -1,5 +1,5 @@
 utilisateur possible :
 
-- restaurant : restaurant@ekaly.com / mxmx
-- client : client@ekaly.com / mxmx
-- livreur : livreur@ekaly.com / mxmx
+- restaurant : restaurant@ekaly.com / 123456
+- client : client@ekaly.com / 123456
+- livreur : livreur@ekaly.com / 123456
