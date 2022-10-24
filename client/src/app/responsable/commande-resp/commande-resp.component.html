@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="input-group mb-2" style="max-width: 500px; margin-top: 25px">
+      <div style="font-size: 18px; margin-right: 20px; margin-top: 4px">
+        Commande déja préparer
+      </div>
+      <div class="input-group-prepend">
+        <div class="input-group-text">Recherche</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="inlineFormInputGroup"
+        [(ngModel)]="term"
+      />
+    </div>
+    <table
+      class="table table-bordered"
+      style="box-shadow: 0 4px 10px -5px #0000004d; margin: 20px"
+    >
+      <thead>
+        <tr class="table-info">
+          <th>client</th>
+          <th>date</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody style="background-color: white">
+        <tr *ngFor="let data of datas">
+          <td>{{ data.client }}</td>
+          <td>{{ data.date }}</td>
+          <td>
+            <a (click)="details(data._id)" class="card-link">Details</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-1"></div>
+</div>

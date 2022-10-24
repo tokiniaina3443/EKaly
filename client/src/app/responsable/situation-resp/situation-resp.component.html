@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="input-group mb-2" style="max-width: 500px; margin-top: 25px;">
+      <div style="font-size: 18px;margin-right: 20px;margin-top: 4px;"> Liste des plats </div>
+      <input value="{{ date }}" type="date" class="form-control" id="date" class="date">
+      <div class="input-group-append">
+        <input (click)="filter()" type="submit">
+      </div>
+    </div>
+    <table class="table table-bordered" style="box-shadow: 0 4px 10px -5px #0000004d;margin: 20px;">
+      <thead>
+        <tr class="table-info">
+          <th>Restaurant</th>
+          <th>Benefice</th>
+      </tr>
+    </thead>
+    <tbody style="background-color: white;">
+      <tr *ngFor="let data of datas">
+        <td>{{ data._id }}</td>
+        <td>{{ data.benefice }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div>Total benefice = <span style="color: green;font-size: 16px;font-weight: 700;">{{ sommes }} Ar.</span></div>
+</div>
+<div class="col-md-1"></div>
+</div>
+

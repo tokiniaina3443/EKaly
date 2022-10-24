@@ -1,0 +1,67 @@
+<form (ngSubmit)="commander()">
+  <div class="row" style="margin: 0 10% 10% 10%">
+    <div class="col-md-1"></div>
+    <div class="col-md-12">
+      <h1>Commander plats</h1>
+      <div class="" style="display: inline-flex; flex-wrap: wrap; margin: 20px">
+        <div
+          *ngFor="
+            let data of datas
+              | filter: term
+              | paginate: { itemsPerPage: 16, currentPage: p };
+            let i = index
+          "
+          class="card"
+          style="width: 18rem; margin: 10px"
+        >
+          <div class="card-body">
+            <div
+              style="
+                display: inline-flex;
+                width: 100%;
+                border-bottom: 1px solid black;
+              "
+              class="card-title"
+            >
+              <div>{{ data.nom }}</div>
+            </div>
+            <p class="card-subtitle mb-2 text-muted">
+              restaurant: {{ data.restau }}
+            </p>
+            <p class="card-text">prix: {{ data.prixvente }} Ar.</p>
+            <input type="hidden" id="id_{{ i }}" value="{{ data._id }}" />
+            <div style="display: flex">
+              <span style="margin-right: 5px; font-size: 12px">quantite</span
+              ><input
+                style="width: 80%"
+                type="number"
+                class="form-control"
+                id="quantite_{{ i }}"
+              />
+            </div>
+            <div style="margin-left: auto; margin-top: 2%">
+              Ajouter panier:
+              <input type="checkbox" name="check" value="{{ i }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <input
+          type="submit"
+          class="btn btn-info"
+          style="width: 115px; height: 35px; font-size: 14px"
+          value="commander"
+        />
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</form>
+<!-- Success message -->
+<div class="success" *ngIf="showSuccessMessage">Saved successfully</div>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{ serverErrorMessages }}
+</div>

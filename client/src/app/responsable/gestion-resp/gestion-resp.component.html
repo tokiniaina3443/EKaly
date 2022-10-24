@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-8 row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="input-group mb-2" style="max-width: 500px; margin-top: 25px;">
+        <div style="font-size: 18px;margin-right: 20px;margin-top: 4px;"> Liste des plats </div>
+        <div class="input-group-prepend">
+          <div class="input-group-text">Search</div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="term">
+      </div>
+      <table class="table table-bordered" style="box-shadow: 0 4px 10px -5px #0000004d;margin: 20px;">
+        <thead>
+          <tr class="table-info">
+            <th>Profil</th>
+            <th>E-mail</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody style="background-color: white;">
+          <tr *ngFor="let data of datas | filter:term | paginate: { itemsPerPage: 16, currentPage: p }">
+            <td>{{ data.profil }}</td>
+            <td>{{ data.email }}</td>
+            <td><a></a></td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <div class="col-md-4">
+    <div style="font-size: 18px;margin-top: 30px;"> Ajout livreur / restaurant</div>
+    <form #signUpForm="ngForm" style="margin-top: 40px;display: inline-grid;width: 90%;" (ngSubmit)="signUpForm.valid && sign(signUpForm)">
+      <div class="form-group row">
+        <label for="nom" class="col-sm-3 col-form-label">Profil</label>
+        <div class="col-sm-9">
+          <select type="text" #profil="ngModel" id="profil" class="form-control" [(ngModel)]="userServiceform.selectedUser.profil" name="profil" placeholder="Profil"
+      required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !profil.valid }">
+            <option value="livreur">livreur</option>
+            <option value="restaurant" selected>restaurant</option>
+            <option value="responsable">responsable</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="signUpForm.submitted && !profil.valid">
+        <label class="validation-message">This field is required.</label>
+      </div>
+      <div class="form-group row">
+        <label for="nom" class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+          <input type="text" #email="ngModel" id="email" class="form-control" [(ngModel)]="userServiceform.selectedUser.email" name="email" placeholder="Email"
+      required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+        </div>
+      </div>
+      <div *ngIf="signUpForm.submitted && email.errors">
+        <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+      </div>
+      <div class="form-group row">
+        <label for="nom" class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input type="password" #password="ngModel" id="password" class="form-control" [(ngModel)]="userServiceform.selectedUser.password" name="password" placeholder="Password"
+      minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+        </div>
+      </div>
+      <div *ngIf="signUpForm.submitted && password.errors">
+        <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+      </div>
+      <div class="form-group row">
+        <input type="submit" class="col-sm-12 btn btn-info" style="width: 80%; height: 33px; font-size: 14px;margin: auto;margin-top: 15px;" value="add">
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Success message -->
+<div class="success" *ngIf="showSuccessMessage">
+  Saved successfully
+</div>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
