@@ -1,0 +1,12 @@
+{
+  "development": {
+    "MONGODB_URI": "mongodb://localhost:27017/EkalyDB",
+    "JWT_SECRET": "SECRET#123",
+    "JWT_EXP": "15m"
+  },
+  "production": {
+    "MONGODB_URI": "mongodb+srv://ekaly:ekaly@cluster0.emawm.mongodb.net/EkalyDB?retryWrites=true&w=majority",
+    "JWT_SECRET": "SECRET#123",
+    "JWT_EXP": "15m"
+  }
+}
